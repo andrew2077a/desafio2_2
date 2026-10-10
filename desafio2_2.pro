@@ -8,7 +8,6 @@ SOURCES += \
         album.cpp \
         fecha.cpp \
         foto.cpp \
-        listaT.cpp \
         main.cpp \
         medidor.cpp \
         mensaje.cpp \
@@ -17,11 +16,11 @@ SOURCES += \
         usuario.cpp
 
 HEADERS += \
+    Lista.h \
     UdeABook.h \
     album.h \
     fecha.h \
     foto.h \
-    listaT.h \
     medidor.h \
     mensaje.h \
     menu.h \
