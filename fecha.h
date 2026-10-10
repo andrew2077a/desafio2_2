@@ -23,6 +23,8 @@ public:
     unsigned char getDia() const;
     unsigned char getMes() const;
     unsigned short getAnio() const;
+    ~Fecha();
+
 
 private:
     unsigned char dia;

@@ -63,3 +63,5 @@ unsigned char Fecha::getMes() const {
 unsigned char Fecha::getDia() const {
     return this->dia;
 }
+
+Fecha::~Fecha(){}
