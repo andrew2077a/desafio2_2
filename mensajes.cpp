@@ -1,38 +1,42 @@
 #include "mensajes.h"
 
-mensaje::mensaje(unsigned short emisor, unsigned short receptor, const std::string& texto, const Fecha& fecha)
+// Constructor
+Mensaje::Mensaje(unsigned short emisor, unsigned short receptor, const string& texto, const Fecha& fecha)
     : emisor(emisor), receptor(receptor), texto(texto), fecha(fecha), leido(false) {}
 
-mensaje::mensaje(const mensaje& otro)
+// Copia
+Mensaje::Mensaje(const Mensaje& otro)
     : emisor(otro.emisor), receptor(otro.receptor), texto(otro.texto), fecha(otro.fecha), leido(otro.leido) {}
 
-mensaje::~mensaje() {
+// Destructor
+Mensaje::~Mensaje() {
 }
 
-void mensaje::marcarLeido() {
+void Mensaje::marcarLeido() {
     leido = true;
 }
 
-bool mensaje::estaLeido() const {
+bool Mensaje::estaLeido() const {
     return leido;
 }
 
-unsigned short mensaje::getEmisor() const {
+unsigned short Mensaje::getEmisor() const {
     return emisor;
 }
 
-unsigned short mensaje::getReceptor() const {
+unsigned short Mensaje::getReceptor() const {
     return receptor;
 }
 
-const std::string& mensaje::getTexto() const {
+const string& Mensaje::getTexto() const {
     return texto;
 }
 
-const Fecha& mensaje::getFecha() const {
+const Fecha& Mensaje::getFecha() const {
     return fecha;
 }
 
-unsigned int mensaje::bytesUsados() const {
-    return sizeof(mensaje) + texto.size();
+// Memoria
+unsigned int Mensaje::bytesUsados() const {
+    return sizeof(Mensaje) + texto.size();
 }

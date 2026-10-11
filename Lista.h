@@ -1,36 +1,40 @@
 #ifndef LISTAT_H
 #define LISTAT_H
 #include "medidor.h"
+
 template <typename T>
 class Lista {
 private:
     T* datos;
     unsigned int tamano;
     unsigned int capacidad;
-    void ampliar(){
-        // CAMBIO 1 (error): se calcula en una variable local y se garantiza que crezca al menos 1
-        // (antes con capacidad 0 o 1 no crecía y se escribía fuera del arreglo)
+
+    // Redimensiona la memoria y copia los elementos al nuevo arreglo
+    void ampliar() {
         unsigned int nuevaCapacidad = capacidad + (capacidad / 2);
         if (nuevaCapacidad <= capacidad) {
             nuevaCapacidad = capacidad + 1;
         }
+
         T* datosNuevos = new T[nuevaCapacidad];
-        for(unsigned long long i=0;i<tamano;i++){
-            datosNuevos[i]=this->datos[i];
+
+        // Copia ordenadamente contando cada operación
+        for (unsigned int i = 0; i < tamano; i++) {
+            datosNuevos[i] = this->datos[i];
             Medidor::contar();
         }
-        delete[]datos;
-        this->datos=datosNuevos;
-        this->capacidad=nuevaCapacidad; // CAMBIO 1: la capacidad se actualiza al final
+
+        delete[] datos; // Libera el arreglo anterior
+        this->datos = datosNuevos;
+        this->capacidad = nuevaCapacidad;
     }
 
 public:
-    // Constructor por defecto
+    // Estado inicial de la lista
     Lista() : datos(nullptr), tamano(0), capacidad(0) {}
 
-    // Constructor con capacidad inicial
-    // CAMBIO 6 (opcional): explicit evita conversiones implícitas de unsigned int a Lista
-    explicit Lista(unsigned int capacidad) {
+    // Reserva espacio inicial para el arreglo
+    Lista(unsigned int capacidad) {
         this->capacidad = capacidad;
         this->tamano = 0;
 
@@ -40,97 +44,116 @@ public:
             datos = nullptr;
         }
     }
-    Lista(const Lista<T>& otra){
-        this->capacidad=otra.capacidad;
-        this->tamano=otra.tamano;
-        if (this->capacidad>0){
-            this->datos=new T[capacidad];
-            for(unsigned int i=0;i<tamano;i++){
-                this->datos[i]=otra.datos[i];
+
+    // Copia los elementos de otra lista
+    Lista(const Lista<T>& otra) {
+        this->capacidad = otra.capacidad;
+        this->tamano = otra.tamano;
+
+        if (this->capacidad > 0) {
+            this->datos = new T[this->capacidad];
+            for (unsigned int i = 0; i < tamano; i++) {
+                this->datos[i] = otra.datos[i];
                 Medidor::contar();
             }
-        }
-        else{
-            datos=nullptr;
+        } else {
+            datos = nullptr;
         }
     }
-    ~Lista(){
+
+    // Libera la memoria del arreglo
+    ~Lista() {
         delete[] datos;
     }
 
+    // Asigna otra lista evitando autoasignacion
     Lista<T>& operator=(const Lista<T>& otra) {
-        // 1. Evitar autoasignación (a = a)
         if (this == &otra) {
             return *this;
         }
+
         T* nuevoDatos = nullptr;
-        // CAMBIO 2 (error): se evalúa la capacidad de 'otra', no la del objeto actual
-        if (otra.capacidad>0){
+        if (otra.capacidad > 0) {
             nuevoDatos = new T[otra.capacidad];
             for (unsigned int i = 0; i < otra.tamano; i++) {
                 nuevoDatos[i] = otra.datos[i];
                 Medidor::contar();
             }
         }
-        // 4. Liberar la memoria antigua
-        delete[] datos;
-        // 5. Reasignar puntero y actualizar atributos
+
+        delete[] datos; // Limpia la memoria actual
         datos = nuevoDatos;
         tamano = otra.tamano;
         capacidad = otra.capacidad;
-        // 6. Retornar la referencia al objeto actual
-        return *this;
-    }
-    T& operator[](unsigned int i){
-        return this->datos[i];
-    }
-    const T& operator[](unsigned int i ) const{
-        return this->datos[i];
-    }
-    Lista<T>& operator+=(const T& elemento){
-        if(this->tamano==this->capacidad){
-            ampliar();
-        }
-        this->datos[tamano]=elemento;
-        this->tamano+=1;
-        return *this;
-    }
-    void insertarEn(unsigned int pos ,const T& elemento ){
-        // CAMBIO 4 (opcional): si la posición es inválida no se hace nada
-        if(pos>this->tamano){
-            return;
-        }
-        if(this->tamano==this->capacidad){
-            ampliar();
-        }
-        for(unsigned int i=this->tamano;i>pos;i--){
-            this->datos[i]=datos[i-1];
-            Medidor::contar();
-        }
-        this->datos[pos]=elemento;
-        tamano+=1;
 
+        return *this;
     }
-    void eliminarEn(unsigned int pos){
-        // CAMBIO 3 (opcional): valida lista vacía y posición inválida
-        // (con tamano=0, 'tamano-1' daba un número enorme por ser unsigned)
-        if(pos>=this->tamano){
+
+    // Acceso directo a una posicion (modificable)
+    T& operator[](unsigned int i) {
+        return this->datos[i];
+    }
+
+    // Acceso directo a una posicion (solo lectura)
+    const T& operator[](unsigned int i ) const {
+        return this->datos[i];
+    }
+
+    // Agrega un elemento al final
+    Lista<T>& operator+=(const T& elemento) {
+        if (this->tamano == this->capacidad) {
+            ampliar();
+        }
+        this->datos[tamano] = elemento;
+        this->tamano += 1;
+        return *this;
+    }
+
+    // Desplaza de atras hacia adelante para abrir el espacio en pos
+    void insertarEn(unsigned int pos, const T& elemento) {
+        if (pos > this->tamano) {
             return;
         }
-        for(unsigned int i=pos;i<tamano-1;i++){
-            this->datos[i]=datos[i+1];
+        if (this->tamano == this->capacidad) {
+            ampliar();
+        }
+
+        // Recorrido inverso para rodar los elementos
+        for (unsigned int i = this->tamano; i > pos; i--) {
+            this->datos[i] = datos[i - 1];
             Medidor::contar();
         }
-        tamano-=1;
+        this->datos[pos] = elemento;
+        tamano += 1;
     }
-    unsigned int getTamano()const{
+
+    // Desplaza de adelante hacia atras para cubrir el hueco en pos
+    void eliminarEn(unsigned int pos) {
+        if (pos >= this->tamano) {
+            return;
+        }
+
+        // Recorrido directo para rodar los elementos
+        for (unsigned int i = pos; i < tamano - 1; i++) {
+            this->datos[i] = datos[i + 1];
+            Medidor::contar();
+        }
+        tamano -= 1;
+    }
+
+    // Cantidad de elementos guardados
+    unsigned int getTamano() const {
         return this->tamano;
     }
-    unsigned int getCapacidad()const{
+
+    // Capacidad total del arreglo
+    unsigned int getCapacidad() const {
         return this->capacidad;
     }
-    unsigned long long bytesUsados()const{
-        return (unsigned long long)this->capacidad*sizeof(T);
+
+    // Memoria total que ocupa el arreglo en bytes
+    unsigned long long bytesUsados() const {
+        return (unsigned long long)this->capacidad * sizeof(T);
     }
 };
 

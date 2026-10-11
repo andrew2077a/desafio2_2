@@ -3,28 +3,29 @@
 
 #include <string>
 #include "Fecha.h"
+using namespace std;
 
-class mensaje {
+class Mensaje {
 private:
     const unsigned short emisor;
     const unsigned short receptor;
-    const std::string texto;
+    const string texto;
     const Fecha fecha;
     bool leido;
 
 public:
-    mensaje(unsigned short emisor, unsigned short receptor, const std::string& texto, const Fecha& fecha);
+    Mensaje(unsigned short emisor, unsigned short receptor, const string& texto, const Fecha& fecha);
 
-    mensaje(const mensaje& otro);
+    Mensaje(const Mensaje& otro);
 
-    ~mensaje();
+    ~Mensaje();
 
     void marcarLeido();
     bool estaLeido() const;
 
     unsigned short getEmisor() const;
     unsigned short getReceptor() const;
-    const std::string& getTexto() const;
+    const string& getTexto() const;
     const Fecha& getFecha() const;   // cambio: referencia constante
 
     unsigned int bytesUsados() const;
