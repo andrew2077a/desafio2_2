@@ -1,6 +1,5 @@
 #ifndef LISTAT_H
 #define LISTAT_H
-
 #include "medidor.h"
 
 template <typename T>

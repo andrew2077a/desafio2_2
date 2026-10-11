@@ -1,7 +1,7 @@
 #include "Foto.h"
 
 // Constructor parametrizado
-Foto::Foto(const std::string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes)
+Foto::Foto(const string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes)
     : fecha(fecha), tamano(tamano), nombre(nombre), likes(likes) {}
 
 // Constructor de copia
@@ -25,7 +25,7 @@ void Foto::quitarLike() {
 }
 
 // Retorna referencia constante al nombre
-const std::string& Foto::getNombre() const {
+const string &Foto::getNombre() const {
     return nombre;
 }
 

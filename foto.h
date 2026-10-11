@@ -3,6 +3,8 @@
 
 #include <string>
 #include "Fecha.h"
+using namespace std;
+
 
 class Foto {
 private:
@@ -12,7 +14,7 @@ private:
     unsigned int likes;
 
 public:
-    Foto(const std::string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes);
+    Foto(const string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes);
 
     Foto(const Foto& otra);
 
@@ -20,7 +22,7 @@ public:
 
     void darLike();
     void quitarLike();
-    const std::string& getNombre() const;
+    const string& getNombre() const;
     const Fecha getFecha() const;
     unsigned int getTamano() const;
     unsigned int getLikes() const;
