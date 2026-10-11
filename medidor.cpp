@@ -25,3 +25,5 @@ unsigned long long Medidor::getMemoria(){
     return memoria;
 }
 
+
+

@@ -4,35 +4,58 @@
 #include <string>
 #include "Fecha.h"
 #include "Lista.h"
-#include "album.h"
-#include "mensajes.h"
+#include "Album.h"
+#include "Mensaje.h"
+
+using namespace std;
 
 class Usuario {
 private:
     unsigned short id;
-    std::string nombreUsuario;
-    std::string contrasena;
-    std::string correo;
-    std::string ciudad;
-    std::string pais;
+    string nombreUsuario;
+    string contrasena;
+    string correo;
+    string ciudad;
+    string pais;
     Fecha fechaNacimiento;
     Fecha fechaInscripcion;
 
-    Lista<album*> albumes;
+    Lista<Album*> albumes;
     Lista<Mensaje*> mensajesRecibidos;
     Lista<Mensaje*> mensajesEnviados;
     Lista<unsigned short> solicitudes;
-
-    Usuario(const Usuario&);
-    Usuario& operator=(const Usuario&);
+    void insertarPorFecha( Lista<Mensaje*>& lista, Mensaje* mensaje);
 
 public:
-    Usuario();
-    Usuario(unsigned short id, std::string nombreUsuario, std::string contrasena, std::string correo,
-            std::string ciudad, std::string pais, Fecha fechaNacimiento, Fecha fechaInscripcion);
+
+    Usuario(unsigned short id, const string& nombreUsuario, const string& contrasena, const string& correo,
+            const string& ciudad, const string& pais, const Fecha& fechaNacimiento, const Fecha& fechaInscripcion);
     ~Usuario();
     bool verificarContrasena( const string& contrasena)const;
-    void agregarAlbum(album* album);
-};
+    void agregarAlbum(Album* album);
+    Album* getAlbum(unsigned int i)const;
+    unsigned int cantidadAlbumes()const;
+    void recibirMensaje(Mensaje* mensaje);
+    void registrarEnviado(Mensaje* mensaje);
+    Mensaje* getRecibido(unsigned int i)const;       // NUEVO CAMBIO 3
+    unsigned int cantidadRecibidos()const;
+    Mensaje* getEnviado(unsigned int i)const;        // NUEVO CAMBIO 3
+    unsigned int cantidadEnviados()const;
+    unsigned int primerIndiceDesde(const Fecha& fecha)const;
+    void agregarSolicitud(unsigned short idEmisor);
+    void eliminarSolicitud(unsigned int pos );
+    bool tieneSolicitudDe(unsigned short id )const;
+    unsigned short getSolicitud(unsigned int pos)const ;
+    unsigned int cantidadSolicitudes()const;
+    unsigned short getId() const;
+    const string& getNombreUsuario() const;
+    const string& getCorreo() const;
+    const string& getCiudad() const;
+    const string& getPais() const;
+    Fecha getFechaNacimiento() const;
+    Fecha getFechaInscripcion() const;
+    unsigned int bytesUsados()const;
 
+
+};
 #endif // USUARIO_H

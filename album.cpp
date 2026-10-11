@@ -1,10 +1,12 @@
 #include "album.h"
 
-album::album(const std::string& nombre, unsigned char privacidad, unsigned int cantidadFotos)
+// Inicializa atributos directamente
+Album::Album(const string& nombre, unsigned char privacidad, unsigned int cantidadFotos)
     : nombre(nombre), privacidad(privacidad), fotos(cantidadFotos) {}
 
-album::album(const album& otro)
-    : nombre(otro.nombre), privacidad(otro.privacidad), fotos(otro.fotos.getTamano()) {   // cambio: getTamano()
+// Constructor copia (duplica fotos dinámicamente)
+Album::Album(const Album& otro)
+    : nombre(otro.nombre), privacidad(otro.privacidad), fotos(otro.fotos.getTamano()) {
     for (unsigned int i = 0; i < otro.fotos.getTamano(); ++i) {
         Medidor::contar();
         Foto* nuevaFoto = new Foto(*(otro.fotos[i]));
@@ -12,26 +14,31 @@ album::album(const album& otro)
     }
 }
 
-album::~album() {
+// Libera memoria de las fotos
+Album::~Album() {
     for (unsigned int i = 0; i < fotos.getTamano(); ++i) {
         Medidor::contar();
         delete fotos[i];
     }
 }
 
-void album::agregarFoto(Foto* foto) {
+// Agrega foto a la lista
+void Album::agregarFoto(Foto* foto) {
     fotos += foto;
 }
 
-Foto* album::getFoto(unsigned int i) const {
+// Retorna foto en posición i
+Foto* Album::getFoto(unsigned int i) const {
     return fotos[i];
 }
 
-unsigned int album::cantidadFotos() const {
+// Total de fotos
+unsigned int Album::cantidadFotos() const {
     return fotos.getTamano();
 }
 
-bool album::esVisiblePara(bool esDueno, bool esAmigo) const {
+// Valida si se puede ver (público, amigos o dueño)
+bool Album::esVisiblePara(bool esDueno, bool esAmigo) const {
     if (esDueno) {
         return true;
     }
@@ -44,16 +51,19 @@ bool album::esVisiblePara(bool esDueno, bool esAmigo) const {
     return false;
 }
 
-const std::string& album::getNombre() const {
+// Nombre del álbum
+const string& Album::getNombre() const {
     return nombre;
 }
 
-unsigned char album::getPrivacidad() const {
+// Nivel de privacidad
+unsigned char Album::getPrivacidad() const {
     return privacidad;
 }
 
-unsigned int album::bytesUsados() const {
-    unsigned int total = sizeof(album) + nombre.size();
+// Memoria usada en RAM
+unsigned int Album::bytesUsados() const {
+    unsigned int total = sizeof(Album) + nombre.size();
     total += fotos.bytesUsados();
     for (unsigned int i = 0; i < fotos.getTamano(); ++i) {
         Medidor::contar();

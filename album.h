@@ -6,27 +6,29 @@
 #include "Lista.h"
 #include "medidor.h"
 
-class album {
+using namespace std;
+
+class Album {
 private:
-    const std::string nombre;
+    const string nombre;
     const unsigned char privacidad;
     Lista<Foto*> fotos;
 
-    album& operator=(const album&);
+    Album& operator=(const Album&);
 
 public:
-    album(const std::string& nombre, unsigned char privacidad, unsigned int cantidadFotos);
+    Album(const string& nombre, unsigned char privacidad, unsigned int cantidadFotos);
 
-    album(const album& otro);
+    Album(const Album& otro);
 
-    ~album();
+    ~Album();
 
     void agregarFoto(Foto* foto);
     Foto* getFoto(unsigned int i) const;
     unsigned int cantidadFotos() const;
     bool esVisiblePara(bool esDueno, bool esAmigo) const;
 
-    const std::string& getNombre() const;
+    const string& getNombre() const;
     unsigned char getPrivacidad() const;
 
     unsigned int bytesUsados() const;
