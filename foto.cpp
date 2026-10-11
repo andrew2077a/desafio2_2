@@ -22,7 +22,7 @@ const std::string& Foto::getNombre() const {
     return nombre;
 }
 
-Fecha Foto::getFecha() const {
+const Fecha& Foto::getFecha() const {
     return fecha;
 }
 

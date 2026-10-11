@@ -21,7 +21,7 @@ public:
     void darLike();
     void quitarLike();
     const std::string& getNombre() const;
-    Fecha getFecha() const;
+    const Fecha& getFecha() const;
     unsigned int getTamano() const;
     unsigned int getLikes() const;
 
