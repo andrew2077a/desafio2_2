@@ -1,4 +1,4 @@
-#include "mensajes.h"
+#include "mensaje.h"
 
 // Constructor
 Mensaje::Mensaje(unsigned short emisor, unsigned short receptor, const string& texto, const Fecha& fecha)

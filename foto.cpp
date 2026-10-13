@@ -1,4 +1,4 @@
-#include "Foto.h"
+#include "foto.h"
 
 // Constructor parametrizado
 Foto::Foto(const string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes)

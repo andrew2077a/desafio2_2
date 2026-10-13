@@ -14,7 +14,6 @@ private:
     const unsigned char privacidad;
     Lista<Foto*> fotos;
 
-    Album& operator=(const Album&);
 
 public:
     Album(const string& nombre, unsigned char privacidad, unsigned int cantidadFotos);

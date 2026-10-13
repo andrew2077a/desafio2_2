@@ -15,14 +15,14 @@ SOURCES += \
         medidor.cpp \
         medidor.cpp \
         mensaje.cpp \
-        mensajes.cpp \
+        mensaje.cpp \
         menu.cpp \
         menu.cpp \
         sugenrenciasAmigos.cpp \
         sugenrenciasAmigos.cpp \
         udeabook.cpp \
         usuario.cpp \
-        usuarios.cpp
+        usuario.cpp
 
 HEADERS += \
     Foto.h \
@@ -37,14 +37,14 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
     sugenrenciasAmigos.h \
     udeabook.h \
     usuario.h \
-    usuarios.h
+    usuario.h
 
 DISTFILES += \
     albumes \
@@ -64,7 +64,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -90,7 +90,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -116,7 +116,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -141,7 +141,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -166,83 +166,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -268,7 +192,57 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -294,57 +268,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -370,7 +294,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -395,7 +319,83 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -421,14 +421,14 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
     sugenrenciasAmigos.h \
     udeabook.h \
     usuario.h \
-    usuarios.h
+    usuario.h
 
 DISTFILES += \
     albumes \
@@ -448,7 +448,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -474,7 +474,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -500,7 +500,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -525,7 +525,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -550,83 +550,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -652,7 +576,57 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -678,57 +652,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -754,7 +678,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -779,7 +703,83 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -804,14 +804,14 @@ SOURCES += \
         medidor.cpp \
         medidor.cpp \
         mensaje.cpp \
-        mensajes.cpp \
+        mensaje.cpp \
         menu.cpp \
         menu.cpp \
         sugenrenciasAmigos.cpp \
         sugenrenciasAmigos.cpp \
         udeabook.cpp \
         usuario.cpp \
-        usuarios.cpp
+        usuario.cpp
 
 HEADERS += \
     Foto.h \
@@ -826,14 +826,14 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
     sugenrenciasAmigos.h \
     udeabook.h \
     usuario.h \
-    usuarios.h
+    usuario.h
 
 DISTFILES += \
     albumes \
@@ -853,7 +853,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -879,7 +879,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -905,7 +905,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -930,7 +930,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -955,83 +955,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1057,7 +981,57 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1083,57 +1057,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1159,7 +1083,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1184,7 +1108,83 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1210,14 +1210,14 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
     sugenrenciasAmigos.h \
     udeabook.h \
     usuario.h \
-    usuarios.h
+    usuario.h
 
 DISTFILES += \
     albumes \
@@ -1237,7 +1237,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1263,7 +1263,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1289,7 +1289,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1314,7 +1314,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1339,83 +1339,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1441,7 +1365,57 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1467,57 +1441,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
     mensaje.h \
-    mensajes.h \
-    menu.h \
-    menu.h \
-    sugenrenciasAmigos.h \
-    sugenrenciasAmigos.h \
-    udeabook.h \
-    usuario.h
-
-DISTFILES += \
-    albumes \
-    amistades \
-    mensajes \
-    usuarios
-
-HEADERS += \
-    Foto.h \
-    Lista.h \
-    UdeABook.h \
-    album.h \
-    album.h \
-    fecha.h \
-    fecha.h \
-    medidor.h \
-    medidor.h \
-    mensaje.h \
-    mensajes.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1543,7 +1467,7 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \
@@ -1568,7 +1492,83 @@ HEADERS += \
     medidor.h \
     medidor.h \
     mensaje.h \
-    mensajes.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
+    menu.h \
+    menu.h \
+    sugenrenciasAmigos.h \
+    sugenrenciasAmigos.h \
+    udeabook.h \
+    usuario.h
+
+DISTFILES += \
+    albumes \
+    amistades \
+    mensajes \
+    usuarios
+
+HEADERS += \
+    Foto.h \
+    Lista.h \
+    UdeABook.h \
+    album.h \
+    album.h \
+    fecha.h \
+    fecha.h \
+    medidor.h \
+    medidor.h \
+    mensaje.h \
+    mensaje.h \
     menu.h \
     menu.h \
     sugenrenciasAmigos.h \

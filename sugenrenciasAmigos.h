@@ -11,8 +11,6 @@ private:
 
     unsigned int posicion(unsigned short i, unsigned short j) const;
 
-    SugerenciasAmigos& operator=(const SugerenciasAmigos&);
-
 public:
     SugerenciasAmigos();
     SugerenciasAmigos(const SugerenciasAmigos& otro);
