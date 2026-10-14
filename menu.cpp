@@ -8,7 +8,10 @@ using namespace std;
 Menu::Menu(UdeABook& sistema)
     : sistema(sistema),
     SUB_RUTA_FIJA("/users/sub-ruta-X-fija/"),
-    PALABRA_SALIR ("salir"){}
+    PALABRA_SALIR ("salir"),
+    RUTA_DATOS("datos/"),
+    ultimoGrupo{0, 0, 0},
+    cantidadUltimo(0) {}
 
 Menu::~Menu() {
 }
@@ -24,6 +27,7 @@ void Menu::ejecutar() {
     mostrarMedicion();
 
     while (pantallaIngreso()) {
+        cantidadUltimo = 0;
         mostrarTresAmigos();
         menuPrincipal();
         sistema.guardarDatos();
@@ -54,6 +58,7 @@ bool Menu::pantallaIngreso() {
 
         if (sistema.iniciarSesion(nombre, contrasena)) {
             cout << "¡Inicio de sesión exitoso!\n";
+            Medidor::reiniciar();
             return true;
         } else {
             cout << "Usuario o contraseña incorrectos. Intente nuevamente.\n";
@@ -63,6 +68,7 @@ bool Menu::pantallaIngreso() {
 
 
 void Menu::mostrarMedicion() const {
+    unsigned long long memoria = sistema.bytesUsados() + Medidor::getMemoria();
     cout << "\n     Consumo de recursos    \n";
     cout << "Iteraciones: " << Medidor::getIteraciones() << "\n";
     cout << "Memoria (bytes): " << Medidor::getMemoria() << "\n";
@@ -72,8 +78,9 @@ void Menu::mostrarMedicion() const {
 void Menu::menuPrincipal() {
     bool fotosActualizadas = false;
     string opcion;
-
+    Usuario* yo = sistema.getUsuarioActivo();
     while (true) {
+        cout << "\nBienvenido a UdeABook " << yo->getNombreUsuario() << "\n\n";
         cout << "\nMenú de opciones:\n\n";
         cout << "1.- Administrar amistades\n";
         cout << "2.- Visitar perfil de un amigo\n";
@@ -91,11 +98,28 @@ void Menu::menuPrincipal() {
         }
 
         Medidor::reiniciar();
+
         switch (opcion[0]) {
-        case '1': menuAmistades();     mostrarMedicion(); break;
-        case '2': visitarPerfil();     mostrarMedicion(); break;
-        case '3': verSugerencias();    mostrarMedicion(); break;
-        case '4': menuMensajes();      mostrarMedicion(); break;
+        case '1':
+            menuAmistades();
+            sistema.guardarDatos(true, false, false);
+            mostrarMedicion();
+            break;
+        case '2':
+            visitarPerfil();
+            sistema.guardarDatos(false, false, true);
+            mostrarMedicion();
+            break;
+        case '3':
+            verSugerencias();
+            sistema.guardarDatos(true, false, false);
+            mostrarMedicion();
+            break;
+        case '4':
+            menuMensajes();
+            sistema.guardarDatos(false, true, false);
+            mostrarMedicion();
+            break;
         case 'N':
         case 'n':
             if (fotosActualizadas) {

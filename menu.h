@@ -31,6 +31,10 @@ private:
     UdeABook& sistema;
     const std::string SUB_RUTA_FIJA;
     const std::string PALABRA_SALIR;
+    const std::string RUTA_DATOS;
+
+    unsigned short ultimoGrupo[3];
+    unsigned short cantidadUltimo;
 
     bool pantallaIngreso();
     void mostrarTresAmigos();
@@ -46,10 +50,12 @@ private:
     void leerNuevos();
     void buscarPorFecha();
     void mostrarMedicion() const;
+    bool leerNumero(const std::string& texto, unsigned int& valor) const;
+    bool leerFecha(const std::string& texto, Fecha& resultado) const;
 
 public:
     explicit Menu(UdeABook& sistema);
-    ~Menu(); // Destructor explícito
+    ~Menu();
     void ejecutar();
 };
 
