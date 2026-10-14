@@ -30,6 +30,7 @@ class Menu {
 private:
     UdeABook& sistema;
     const std::string SUB_RUTA_FIJA;
+    const std::string PALABRA_SALIR;
 
     bool pantallaIngreso();
     void mostrarTresAmigos();
@@ -44,7 +45,7 @@ private:
     void enviarMensaje();
     void leerNuevos();
     void buscarPorFecha();
-    void mostrarMedicion();
+    void mostrarMedicion() const;
 
 public:
     explicit Menu(UdeABook& sistema);
