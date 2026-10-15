@@ -531,4 +531,3 @@ bool Menu::leerFecha(const string& texto, Fecha& resultado) const {
                       static_cast<unsigned short>(a));
     return true;
 }
-

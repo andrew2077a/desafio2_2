@@ -4,34 +4,15 @@
 #include <string>
 #include "Album.h"
 #include "Usuario.h"
-#include "Medidor.h"
-
-
-class UdeABook {
-public:
-    UdeABook() {}
-    ~UdeABook() {}
-    bool cargarDatos() { return true; }
-    bool guardarDatos() { return true; }
-    bool iniciarSesion(const std::string&, const std::string&) { return true; }
-    void cerrarSesion() {}
-    Usuario* getUsuarioActivo() { return nullptr; }
-    Usuario* getUsuario(unsigned short) { return nullptr; }
-    Usuario* obtenerAmigo(const std::string&) { return nullptr; }
-    unsigned char elegirTresAmigos(unsigned short*, const unsigned short*) { return 0; }
-    unsigned char enviarSolicitud(const std::string&) { return 0; }
-    void aceptarSolicitud(unsigned int) {}
-    unsigned short obtenerSugerencias(unsigned short, unsigned short*, unsigned short*) { return 0; }
-    unsigned char enviarMensaje(const std::string&, const std::string&) { return 0; }
-    unsigned long long bytesUsados() const { return sizeof(UdeABook); }
-};
-
+#include "medidor.h"
+#include "UdeABook.h"
+using namespace std;
 class Menu {
 private:
     UdeABook& sistema;
-    const std::string SUB_RUTA_FIJA;
-    const std::string PALABRA_SALIR;
-    const std::string RUTA_DATOS;
+    const string SUB_RUTA_FIJA;
+    const string PALABRA_SALIR;
+    const string RUTA_DATOS;
 
     unsigned short ultimoGrupo[3];
     unsigned short cantidadUltimo;
@@ -43,15 +24,15 @@ private:
     void enviarSolicitud();
     void aceptarSolicitudes();
     void visitarPerfil();
-    void carrusel(const Album& album, const std::string& nombreDueno);
+    void carrusel(const Album& album, const string& nombreDueno);
     void verSugerencias();
     void menuMensajes();
     void enviarMensaje();
     void leerNuevos();
     void buscarPorFecha();
-    void mostrarMedicion() const;
-    bool leerNumero(const std::string& texto, unsigned int& valor) const;
-    bool leerFecha(const std::string& texto, Fecha& resultado) const;
+    void mostrarMedicion(const string& externos = "ninguno") const;
+    bool leerNumero(const string& texto, unsigned int& valor) const;
+    bool leerFecha(const string& texto, Fecha& resultado) const;
 
 public:
     explicit Menu(UdeABook& sistema);
