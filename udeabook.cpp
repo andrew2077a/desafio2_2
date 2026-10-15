@@ -5,10 +5,12 @@
 #include <cstdlib>
 using namespace std;
 
+// Constructor: empieza sin sesión activa (-1) y con las listas vacías
 UdeABook::UdeABook()
     : usuarios(), amistades(), usuarioActivo(-1) {
 }
 
+// Destructor: borra cada Usuario (cada uno libera sus álbumes, fotos y mensajes recibidos)
 UdeABook::~UdeABook() {
     for (unsigned int i = 0; i < usuarios.getTamano(); i++) {
         Medidor::contar(); // se cuenta cada vuelta
@@ -19,6 +21,8 @@ UdeABook::~UdeABook() {
 
 }
 
+// Carga todo en orden obligatorio: usuarios, matriz de amistades, amistades/solicitudes, mensajes y álbumes.
+// Devuelve false si algo falla
 bool UdeABook::cargarDatos(){
     try{
         if(!cargarUsuarios()){
@@ -37,6 +41,7 @@ bool UdeABook::cargarDatos(){
     }
     return true;
 }
+// Lee los usuarios: cuenta las líneas (N), reserva la lista exacta y pone a cada usuario en la posición de su id
 bool UdeABook::cargarUsuarios() {
     try {
         string Archivo_Usuarios = "C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\usuarios";
@@ -48,7 +53,7 @@ bool UdeABook::cargarUsuarios() {
         string linea;
         unsigned int N = 0;
 
-        // CAMBIO: Se lee hasta '\r' para ignorar el retorno de carro en el conteo
+        // Apunte: primera pasada solo cuenta usuarios (ignora lineas vacias o con solo '\r'); N = capacidad exacta
         while (getline(archivo, linea)) {
             if (!linea.empty() && linea != "\r") {
                 N++;
@@ -85,7 +90,7 @@ bool UdeABook::cargarUsuarios() {
             getline(flujo, pais, ';');
             getline(flujo, fechaNac, ';');
 
-            // CAMBIO: Se usa '\r' como delimitador para descartar el retorno de carro en el ultimo campo
+            // Apunte: el ultimo campo se lee hasta '\r' (asi no se usa pop_back, que esta prohibido)
             getline(flujo, fechaInsc, '\r');
 
             unsigned int id = stoi(campoId);
@@ -103,6 +108,7 @@ bool UdeABook::cargarUsuarios() {
     }
     return true;
 }
+// Lee las amistades: por cada línea, los amigos van a la matriz de bits y las solicitudes a la lista del usuario
 bool UdeABook::cargarAmistades() {
     try {
         string Archivo_Amistades = "C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\amistades";
@@ -134,7 +140,7 @@ bool UdeABook::cargarAmistades() {
 
             getline(flujo, idsAmigos, ';');
 
-            // CAMBIO: Se usa '\r' como delimitador para descartar el salto de linea del ultimo campo
+            // Apunte: ultimo campo (solicitudes) hasta '\r', sin pop_back
             getline(flujo, idsSolicitudes, '\r');
 
             flujoAmigos.clear();
@@ -168,6 +174,7 @@ bool UdeABook::cargarAmistades() {
     }
     return true;
 }
+// Lee los mensajes: crea cada uno una sola vez; el receptor lo posee y el emisor solo lo apunta
 bool UdeABook::cargarMensajes() {
     try {
         string Archivo_Mensajes = "C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\mensajes";
@@ -194,7 +201,7 @@ bool UdeABook::cargarMensajes() {
             getline(flujo, fecha, ';');
             getline(flujo, leido, ';');
 
-            // CAMBIO: Se usa '\r' como delimitador en el último campo para descartar el salto de línea sin usa pop_back()
+            // Apunte: el texto es el resto de la linea hasta '\r' (puede traer ';' adentro)
             getline(flujo, texto, '\r');
 
             if (emisor == "" || receptor == "") {
@@ -223,6 +230,7 @@ bool UdeABook::cargarMensajes() {
     }
     return true;
 }
+// Lee los álbumes: una línea de álbum seguida de exactamente cantidadFotos líneas de fotos
 bool UdeABook::cargarAlbumes() {
     try {
         string Archivo_Album = "C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\albumes";
@@ -247,7 +255,7 @@ bool UdeABook::cargarAlbumes() {
             getline(flujo, idUsuario, ';');
             getline(flujo, nombreAlbum, ';');
             getline(flujo, privacidad, ';');
-            // CAMBIO: Se usa '\r' como delimitador para que el salto de línea no quede en la variable
+            // Apunte: cantidadFotos es el ultimo campo de la linea del album, se lee hasta '\r'
             getline(flujo, cantidadFotos, '\r');
             unsigned int canti = stoi(cantidadFotos);
             Album* albu = new Album(nombreAlbum, (unsigned char)stoi(privacidad), canti);
@@ -263,7 +271,7 @@ bool UdeABook::cargarAlbumes() {
                 getline(flujo, fecha, ';');
                 getline(flujo, tamano, ';');
 
-                // CAMBIO: Se usa '\r' como delimitador para limpiar el último dato de la foto
+                // Apunte: likes es el ultimo campo de la linea de la foto, se lee hasta '\r'
                 getline(flujo, likes, '\r');
 
                 albu->agregarFoto(new Foto(nombreFoto, textoAFecha(fecha), stoi(tamano), stoi(likes)));
@@ -284,6 +292,7 @@ bool UdeABook::cargarAlbumes() {
     return true;
 }
 
+// Convierte un texto dd/mm/aaaa en una Fecha (se usa al cargar usuarios, mensajes y álbumes)
 Fecha UdeABook::textoAFecha(const string& texto) {
     stringstream flujo(texto);
     string dia, mes, anio;
@@ -294,6 +303,7 @@ Fecha UdeABook::textoAFecha(const string& texto) {
 
     return Fecha((unsigned char)stoi(dia), (unsigned char)stoi(mes), (unsigned short)stoi(anio));
 }
+// Guarda solo lo que se pida (amistades, mensajes y/o likes); por defecto guarda todo
 bool UdeABook::guardarDatos(bool conAmistades, bool conMensajes, bool conLikes){
     if(conAmistades && !guardarAmistades()){
         return false;
@@ -307,6 +317,7 @@ bool UdeABook::guardarDatos(bool conAmistades, bool conMensajes, bool conLikes){
     return true;
 }
 
+// Reescribe el archivo de amistades completo: id;amigos;solicitudes de cada usuario
 bool UdeABook::guardarAmistades(){
     try{
         string Archivo_Amistades="C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\amistades";
@@ -361,24 +372,22 @@ bool UdeABook::guardarAmistades(){
     // Todo salió bien
     return true;
 }
+// Reescribe el archivo de mensajes completo (solo los recibidos, para no repetirlos)
 bool UdeABook::guardarMensajes(){
     string Archivo_Mensajes="C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\mensajes";
     ofstream archivo(Archivo_Mensajes);
     try{
-        // CAMBIO 1 (error de lógica): estaba al revés. Lanzaba el error cuando el archivo SÍ abría.
-        // Además el mensaje decía "amistades"
+        // Apunte: si el archivo NO abre, se lanza el error
         if (!archivo.is_open()){
             throw string("no se abrio el archivo de mensajes para escribir");
         }
         unsigned int N= usuarios.getTamano();
-        // CAMBIO 2 (error): i no estaba inicializada, empezaba con basura
         for(unsigned int i=0;i<N;i++){
+            // Apunte: solo se recorren los recibidos, asi cada mensaje se guarda una sola vez
             unsigned n=usuarios[i]->cantidadRecibidos();
-            // CAMBIO 2: igual con e
             for(unsigned int e=0;e<n;e++){
-                Medidor::contar(); // CAMBIO 3: faltaba contar una vuelta por mensaje
-                // CAMBIO 4 (error de compilación y de lógica): no se crea nada con new, el mensaje ya existe.
-                // Se pide el mensaje e del usuario i (antes usabas usuarios[e] y no le pasabas el índice)
+                Medidor::contar(); // una vuelta por mensaje
+                // Apunte: el mensaje ya existe (no se crea con new), se pide el e-esimo recibido del usuario i
                 Mensaje* m= usuarios[i]->getRecibido(e);
                 archivo<<m->getEmisor()<<';';
                 archivo<<m->getReceptor()<<';';
@@ -387,7 +396,7 @@ bool UdeABook::guardarMensajes(){
                 archivo<<m->getTexto()<<'\n';
             }
         }
-        archivo.close(); // CAMBIO 7: se cierra para asegurar que todo quedó escrito
+        archivo.close(); // se cierra para asegurar que todo quedo escrito
     }
     catch (string& error){
         cout<<"Error: "<<error<<endl;
@@ -396,6 +405,7 @@ bool UdeABook::guardarMensajes(){
     return true;
 
 }
+// Reescribe el archivo de álbumes completo, con los likes actualizados
 bool UdeABook:: guardarLikes(){
     string Archivo_Album="C:\\Users\\gisel\\OneDrive\\Escritorio\\practi_c++\\fina2.0\\desafio2_2\\albumes";
     ofstream archivo(Archivo_Album);
@@ -415,7 +425,7 @@ bool UdeABook:: guardarLikes(){
                 archivo<<static_cast<int>(abu->getPrivacidad())<<';';
                 archivo<<ne<<'\n';
                 for(unsigned int u=0;u<ne;u++){
-                    Medidor::contar(); // CAMBIO 2: también una vuelta por cada línea de foto
+                    Medidor::contar(); // tambien una vuelta por cada linea de foto
                     Foto* fot=abu->getFoto(u);
                     archivo<<fot->getNombre()<<';';
                     archivo<<fot->getFecha()<<';';
@@ -434,6 +444,8 @@ bool UdeABook:: guardarLikes(){
     return true;
 
 }
+// Valida nombre y contraseña; si coinciden deja ese usuario como activo
+// (no distingue cuál de los dos falló)
 bool UdeABook::iniciarSesion(const string& nombre, const string& contrasena) {
     int indice = buscarUsuario(nombre);
 
@@ -448,22 +460,26 @@ bool UdeABook::iniciarSesion(const string& nombre, const string& contrasena) {
 
     return false;
 }
+// Cierra la sesión: -1 significa que no hay usuario activo
 void UdeABook::cerrarSesion(){
     usuarioActivo=-1;
 }
 
+// Devuelve el usuario con sesión iniciada, o nullptr si no hay ninguno
 Usuario* UdeABook:: getUsuarioActivo(){
     if(usuarioActivo==-1){
         return nullptr;
     }
     return usuarios[usuarioActivo];
 }
+// Devuelve el usuario por id (el id es su posición en la lista, acceso directo); nullptr si no existe
 Usuario* UdeABook:: getUsuario( unsigned short id ){
     if(id>=usuarios.getTamano()){
         return nullptr;
     }
     return usuarios[id];
 }
+// Busca por nombre recorriendo la lista; devuelve su posición o -1 si no existe
 short UdeABook::buscarUsuario(const string& nombre) {
     for (unsigned int i = 0; i < usuarios.getTamano(); i++) {
         Medidor::contar();
@@ -473,6 +489,7 @@ short UdeABook::buscarUsuario(const string& nombre) {
     }
     return -1;
 }
+// Devuelve al usuario solo si existe y es amigo del activo; si no, nullptr
 Usuario* UdeABook:: obtenerAmigo(const string& nombre){
     short indi=buscarUsuario(nombre);
     if(indi==-1){
@@ -484,6 +501,8 @@ Usuario* UdeABook:: obtenerAmigo(const string& nombre){
     return usuarios[indi];
 
 }
+// Peso para el sorteo: hasta 10 amigos en común -> 2, hasta 20 -> 5, más de 20 -> 7
+// (prioridades 1, 2.5 y 3.5 multiplicadas por 2 para trabajar con enteros)
 unsigned char UdeABook::pesoPorAmigosEnComun(unsigned short comunes){
     if(comunes<=10){
         return 2;
@@ -495,6 +514,8 @@ unsigned char UdeABook::pesoPorAmigosEnComun(unsigned short comunes){
 }
 #include <cstdlib>   // para rand()
 
+// Sorteo de hasta 3 amigos: más amigos en común = más probabilidad de salir.
+// Guarda los ids en resultado y devuelve cuántos eligió. previos son los 3 de la vez anterior (nullptr la primera vez)
 unsigned char UdeABook::elegirTresAmigos(unsigned short* resultado, const unsigned short* previos){
     if (usuarioActivo == -1){
         return 0;
@@ -547,6 +568,8 @@ unsigned char UdeABook::elegirTresAmigos(unsigned short* resultado, const unsign
     delete[] pesos;
     return elegidos;
 }
+// Envía una solicitud de amistad. Códigos: 0 enviada, 1 no existe, 2 es él mismo,
+// 3 ya son amigos, 4 ya la había enviado, 5 esa persona ya le envió una a él
 unsigned char UdeABook::enviarSolicitud(const string& nombre) {
     short indice = buscarUsuario(nombre);
     if (indice == -1) {
@@ -564,10 +587,12 @@ unsigned char UdeABook::enviarSolicitud(const string& nombre) {
     if (usuarios[usuarioActivo]->tieneSolicitudDe(indice)) {
         return 5;
     }
+    // La solicitud queda en el destinatario; el archivo se actualiza luego en guardarDatos
     usuarios[indice]->agregarSolicitud(usuarioActivo);
 
     return 0;
 }
+// Acepta la solicitud de esa posición: crea la amistad y la quita de la lista
 void UdeABook:: aceptarSolicitud(unsigned int posicion ){
     Usuario* activo= usuarios[usuarioActivo];
     if(activo->cantidadSolicitudes()<=posicion){
@@ -575,13 +600,17 @@ void UdeABook:: aceptarSolicitud(unsigned int posicion ){
     }
     unsigned int idusu=activo->getSolicitud(posicion);
     amistades.crearAmistad(usuarioActivo,idusu);
+    // Al quitarla, las solicitudes siguientes se corren una posición
     activo->eliminarSolicitud(posicion);
 }
 
+// Pide a la matriz de amistades las k mejores sugerencias (amigos de amigos) con sus amigos en común
 unsigned short UdeABook::obtenerSugerencias(unsigned short k,unsigned short* ids,unsigned short* comunes){
     return amistades.calcularSugerencias(usuarioActivo,k,ids,comunes);
 }
 
+// Envía un mensaje a un amigo. Códigos: 0 enviado, 1 no existe o no es amigo,
+// 2 mensaje vacío, 3 más de 512 caracteres
 unsigned char UdeABook::enviarMensaje(const string& nombreAmigo, const string& texto) {
     if (texto.size() == 0) {
         return 2;
@@ -594,6 +623,7 @@ unsigned char UdeABook::enviarMensaje(const string& nombreAmigo, const string& t
         return 1;
     }
 
+    // Todo se valida antes del new, así un mensaje rechazado no deja memoria reservada
     Mensaje* m = new Mensaje(usuarioActivo, amigo->getId(), texto, Fecha::hoy());
 
     usuarios[usuarioActivo]->registrarEnviado(m);
@@ -601,6 +631,7 @@ unsigned char UdeABook::enviarMensaje(const string& nombreAmigo, const string& t
 
     return 0;
 }
+// Memoria total del sistema en bytes: el objeto, la lista de usuarios, cada usuario y la matriz de amistades
 unsigned long long UdeABook::bytesUsados() {
     unsigned long long total = 0;
 

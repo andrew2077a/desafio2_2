@@ -37,9 +37,9 @@ public:
     unsigned int cantidadAlbumes()const;
     void recibirMensaje(Mensaje* mensaje);
     void registrarEnviado(Mensaje* mensaje);
-    Mensaje* getRecibido(unsigned int i)const;       // NUEVO CAMBIO 3
+    Mensaje* getRecibido(unsigned int i)const;
     unsigned int cantidadRecibidos()const;
-    Mensaje* getEnviado(unsigned int i)const;        // NUEVO CAMBIO 3
+    Mensaje* getEnviado(unsigned int i)const;
     unsigned int cantidadEnviados()const;
     unsigned int primerIndiceDesde(const Fecha& fecha)const;
     void agregarSolicitud(unsigned short idEmisor);
