@@ -7,8 +7,8 @@ using namespace std;
 
 // Constructor: empieza sin sesión activa (-1) y con las listas vacías
 UdeABook::UdeABook()
-    : usuarios(), amistades(), usuarioActivo(-1) {
-}
+    : usuarios(), amistades(), usuarioActivo(-1),
+    cambiosAmistades(false), cambiosMensajes(false), cambiosLikes(false) {}
 
 // Destructor: borra cada Usuario (cada uno libera sus álbumes, fotos y mensajes recibidos)
 UdeABook::~UdeABook() {
@@ -305,18 +305,26 @@ Fecha UdeABook::textoAFecha(const string& texto) {
 }
 // Guarda solo lo que se pida (amistades, mensajes y/o likes); por defecto guarda todo
 bool UdeABook::guardarDatos(bool conAmistades, bool conMensajes, bool conLikes){
-    if(conAmistades && !guardarAmistades()){
-        return false;
+    if(conAmistades && cambiosAmistades){
+        if(!guardarAmistades()){
+            return false;
+        }
+        cambiosAmistades = false;
     }
-    if(conMensajes && !guardarMensajes()){
-        return false;
+    if(conMensajes && cambiosMensajes){
+        if(!guardarMensajes()){
+            return false;
+        }
+        cambiosMensajes = false;
     }
-    if(conLikes && !guardarLikes()){
-        return false;
+    if(conLikes && cambiosLikes){
+        if(!guardarLikes()){
+            return false;
+        }
+        cambiosLikes = false;
     }
     return true;
 }
-
 // Reescribe el archivo de amistades completo: id;amigos;solicitudes de cada usuario
 bool UdeABook::guardarAmistades(){
     try{
@@ -587,8 +595,10 @@ unsigned char UdeABook::enviarSolicitud(const string& nombre) {
     if (usuarios[usuarioActivo]->tieneSolicitudDe(indice)) {
         return 5;
     }
-    // La solicitud queda en el destinatario; el archivo se actualiza luego en guardarDatos
     usuarios[indice]->agregarSolicitud(usuarioActivo);
+    cambiosAmistades = true;
+
+    return 0;
 
     return 0;
 }
@@ -602,7 +612,9 @@ void UdeABook:: aceptarSolicitud(unsigned int posicion ){
     amistades.crearAmistad(usuarioActivo,idusu);
     // Al quitarla, las solicitudes siguientes se corren una posición
     activo->eliminarSolicitud(posicion);
+    cambiosAmistades = true;
 }
+
 
 // Pide a la matriz de amistades las k mejores sugerencias (amigos de amigos) con sus amigos en común
 unsigned short UdeABook::obtenerSugerencias(unsigned short k,unsigned short* ids,unsigned short* comunes){
@@ -628,6 +640,9 @@ unsigned char UdeABook::enviarMensaje(const string& nombreAmigo, const string& t
 
     usuarios[usuarioActivo]->registrarEnviado(m);
     amigo->recibirMensaje(m);
+    cambiosMensajes = true;
+
+    return 0;
 
     return 0;
 }
@@ -649,4 +664,13 @@ unsigned long long UdeABook::bytesUsados() {
     total += amistades.bytesUsados();
 
     return total;
+}
+// Avisa que hay mensajes por guardar (ej: se marcaron como leidos)
+void UdeABook::marcarCambioMensajes() {
+    cambiosMensajes = true;
+}
+
+// Avisa que hay likes por guardar
+void UdeABook::marcarCambioLikes() {
+    cambiosLikes = true;
 }

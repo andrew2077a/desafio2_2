@@ -2,7 +2,7 @@
 #define MENSAJES_H
 
 #include <string>
-#include "Fecha.h"
+#include "fecha.h"
 using namespace std;
 
 class Mensaje {

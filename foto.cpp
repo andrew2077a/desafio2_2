@@ -30,7 +30,7 @@ const string &Foto::getNombre() const {
 }
 
 // Retorna la fecha de la foto
-const Fecha Foto::getFecha() const {
+const Fecha& Foto::getFecha() const {
     return fecha;
 }
 

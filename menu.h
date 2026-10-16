@@ -2,8 +2,8 @@
 #define MENU_H
 
 #include <string>
-#include "Album.h"
-#include "Usuario.h"
+#include "album.h"
+#include "usuario.h"
 #include "medidor.h"
 #include "UdeABook.h"
 using namespace std;
@@ -11,8 +11,6 @@ class Menu {
 private:
     UdeABook& sistema;
     const string SUB_RUTA_FIJA;
-    const string PALABRA_SALIR;
-    const string RUTA_DATOS;
 
     unsigned short ultimoGrupo[3];
     unsigned short cantidadUltimo;
@@ -33,6 +31,8 @@ private:
     void mostrarMedicion(const string& externos = "ninguno") const;
     bool leerNumero(const string& texto, unsigned int& valor) const;
     bool leerFecha(const string& texto, Fecha& resultado) const;
+    void guardarYMedir(bool amistades, bool mensajes, bool likes);
+
 
 public:
     explicit Menu(UdeABook& sistema);

@@ -2,7 +2,7 @@
 #define FOTO_H
 
 #include <string>
-#include "Fecha.h"
+#include "fecha.h"
 using namespace std;
 
 
@@ -23,7 +23,7 @@ public:
     void darLike();
     void quitarLike();
     const string& getNombre() const;
-    const Fecha getFecha() const;
+    const Fecha& getFecha() const;
     unsigned int getTamano() const;
     unsigned int getLikes() const;
 

@@ -153,11 +153,11 @@ const string& Usuario::getPais() const {
     return this->pais;
 }
 
-Fecha Usuario::getFechaNacimiento() const {
+const Fecha& Usuario::getFechaNacimiento() const {
     return this->fechaNacimiento;
 }
 
-Fecha Usuario::getFechaInscripcion() const {
+const Fecha& Usuario::getFechaInscripcion() const {
     return this->fechaInscripcion;
 }
 
