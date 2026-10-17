@@ -1,4 +1,4 @@
-#include "Menu.h"
+#include "menu.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -62,8 +62,8 @@ void Menu::ejecutar() {
 
 // Pantalla de bienvenida: pide usuario y contraseña (false si decide salir)
 bool Menu::pantallaIngreso() {
-    Medidor::reiniciar();
     string nombre, contrasena;
+    Medidor::reiniciar();
 
     while (true) {
         cout << "+==================================+\n";
@@ -83,7 +83,6 @@ bool Menu::pantallaIngreso() {
 
         if (sistema.iniciarSesion(nombre, contrasena)) {
             cout << "[OK] ¡Inicio de sesión exitoso!\n\n";
-            Medidor::reiniciar();
             return true;
         } else {
             cout << "[X] Usuario o contraseña incorrectos. Intente nuevamente.\n\n";
@@ -93,7 +92,9 @@ bool Menu::pantallaIngreso() {
 
 // Sortea y muestra las fotos de perfil de hasta tres amigos
 void Menu::mostrarTresAmigos() {
-    Medidor::reiniciar();
+    if (cantidadUltimo > 0) {
+        Medidor::reiniciar();
+    }
 
     unsigned short ids[3];
     unsigned short previos[3] = {65535, 65535, 65535};
@@ -376,7 +377,6 @@ void Menu::carrusel(const Album& album, const string& nombreDueno) {
     unsigned int op = 0;
     bool salir = false;
     Medidor::sumarMemoria(sizeof(n) + sizeof(i) + sizeof(op) + sizeof(salir));
-    int repitLike=0,repiDislike=0;
 
     while (!salir) {
         Medidor::contar();
@@ -403,26 +403,12 @@ void Menu::carrusel(const Album& album, const string& nombreDueno) {
         case 1: i = (i + 1) % n; break;
         case 2: i = (i + n - 1) % n; break;
         case 3:
-            if (repitLike == 0) {
-                foto->darLike();
-                sistema.marcarCambioLikes();
-                repitLike = 1;
-                repiDislike = 0;
-            }
-            else {
-                cout << "Ya le dio like\n\n";
-            }
+            foto->darLike();
+            sistema.marcarCambioLikes();
             break;
         case 4:
-            if (repiDislike == 0) {
-                foto->quitarLike();
-                sistema.marcarCambioLikes();
-                repiDislike = 1;
-                repitLike = 0;
-            }
-            else {
-                cout << "Ya le dio Dislike\n\n";
-            }
+            foto->quitarLike();
+            sistema.marcarCambioLikes();
             break;
         case 0: salir = true; break;
         default: cout << "[!] Opción inválida.\n\n";
@@ -627,5 +613,8 @@ bool Menu::leerFecha(const string& texto, Fecha& resultado) const {
 void Menu::guardarYMedir(bool amistades, bool mensajes, bool likes) {
     Medidor::reiniciar();
     sistema.guardarDatos(amistades, mensajes, likes);
-    mostrarMedicion("fstream (escritura de archivos)");
+    // Si no se escribió nada, las iteraciones quedan en 0 y no se muestra el cuadro
+    if (Medidor::getIteraciones() > 0) {
+        mostrarMedicion("fstream (escritura de archivos)");
+    }
 }
