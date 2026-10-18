@@ -14,7 +14,7 @@ static void mostrarResultadoSolicitud(unsigned char codigo) {
     case 2: cout << "[!] No puedes enviarte una solicitud a ti mismo.\n\n"; break;
     case 3: cout << "[!] Ya son amigos.\n\n"; break;
     case 4: cout << "[!] Ya le enviaste una solicitud a esa persona.\n\n"; break;
-    case 5: cout << "[!] Esa persona ya te envió una solicitud: acéptala en 'Administrar amistades'.\n\n"; break;
+    case 5: cout << "[!] Esa persona ya te envio una solicitud: aceptala en 'Administrar amistades'.\n\n"; break;
     default: cout << "[X] No se pudo enviar la solicitud.\n\n";
     }
 }
@@ -37,13 +37,13 @@ Menu::Menu(UdeABook& sistema)
 Menu::~Menu() {
 }
 
-// Programa principal: carga datos, pide ingreso y muestra el menú hasta que se salga
+// Programa principal: carga datos, pide ingreso y muestra el menu hasta que se salga
 void Menu::ejecutar() {
     srand(time(nullptr));
 
     Medidor::reiniciar();
     if (!sistema.cargarDatos()) {
-        cout << "[X] Error crítico: No se pudieron cargar los datos del sistema.\n\n";
+        cout << "[X] Error critico: No se pudieron cargar los datos del sistema.\n\n";
         return;
     }
     mostrarMedicion("fstream (lectura de archivos)");
@@ -60,7 +60,7 @@ void Menu::ejecutar() {
     cout << "+==================================+\n";
 }
 
-// Pantalla de bienvenida: pide usuario y contraseña (false si decide salir)
+// Pantalla de bienvenida: pide usuario y contrasena (false si decide salir)
 bool Menu::pantallaIngreso() {
     string nombre, contrasena;
     Medidor::reiniciar();
@@ -77,15 +77,15 @@ bool Menu::pantallaIngreso() {
             return false;
         }
 
-        cout << "Ingrese contraseña: ";
+        cout << "Ingrese contrasena: ";
         getline(cin, contrasena);
         cout << "\n";
 
         if (sistema.iniciarSesion(nombre, contrasena)) {
-            cout << "[OK] ¡Inicio de sesión exitoso!\n\n";
+            cout << "[OK] ¡Inicio de sesion exitoso!\n\n";
             return true;
         } else {
-            cout << "[X] Usuario o contraseña incorrectos. Intente nuevamente.\n\n";
+            cout << "[X] Usuario o contrasena incorrectos. Intente nuevamente.\n\n";
         }
     }
 }
@@ -114,7 +114,7 @@ void Menu::mostrarTresAmigos() {
     cout << "|    FOTOS DE PERFIL DE AMIGOS     |\n";
     cout << "+----------------------------------+\n";
     if (n == 0) {
-        cout << (esActualizacion ? "No hay más amigos disponibles para mostrar.\n" : "Aún no tienes amigos en la plataforma.\n");
+        cout << (esActualizacion ? "No hay mas amigos disponibles para mostrar.\n" : "Aun no tienes amigos en la plataforma.\n");
     }
     else {
         for (unsigned char i = 0; i < n; ++i) {
@@ -131,7 +131,7 @@ void Menu::mostrarTresAmigos() {
     mostrarMedicion("rand (sorteo de amigos)");
 }
 
-// Menú principal del usuario con sesión iniciada
+// Menu principal del usuario con sesion iniciada
 void Menu::menuPrincipal() {
     bool fotosActualizadas = false;
     string opcion;
@@ -139,7 +139,7 @@ void Menu::menuPrincipal() {
 
     while (true) {
         cout << "+==================================+\n";
-        cout << "|         MENÚ DE OPCIONES         |\n";
+        cout << "|         MENU DE OPCIONES         |\n";
         cout << "+==================================+\n";
         cout << " Bienvenido a UdeABook " << yo->getNombreUsuario() << "\n";
         cout << "+----------------------------------+\n\n";
@@ -151,14 +151,14 @@ void Menu::menuPrincipal() {
         if (!fotosActualizadas && cantidadUltimo > 0) {
             cout << "Ingrese 'N' o 'n' para alternar el grupo de fotos de perfil de amigos.\n";
         }
-        cout << "Ingrese 'S' o 's' para cerrar su sesión.\n";
+        cout << "Ingrese 'S' o 's' para cerrar su sesion.\n";
         cout << "----------------------------------------\n";
-        cout << "Su opción: ";
+        cout << "Su opcion: ";
         getline(cin, opcion);
         cout << "\n";
 
         if (opcion.size() != 1) {
-            cout << "[!] Opción no válida.\n\n";
+            cout << "[!] Opcion no valida.\n\n";
             continue;
         }
 
@@ -191,15 +191,15 @@ void Menu::menuPrincipal() {
             break;
         case 'S':
         case 's':
-            cout << "Cerrando sesión...\n\n";
+            cout << "Cerrando sesion...\n\n";
             return;
         default:
-            cout << "[!] Opción no válida.\n\n";
+            cout << "[!] Opcion no valida.\n\n";
         }
     }
 }
 
-// Submenú de amistades (enviar y aceptar solicitudes)
+// Submenu de amistades (enviar y aceptar solicitudes)
 void Menu::menuAmistades() {
     unsigned int op;
     do {
@@ -211,7 +211,7 @@ void Menu::menuAmistades() {
         cout << "0.- Volver\n";
         cout << "+----------------------------------+\n";
 
-        if (!leerNumero("Su opción: ", op)) {
+        if (!leerNumero("Su opcion: ", op)) {
             op = 99;
         }
 
@@ -219,12 +219,12 @@ void Menu::menuAmistades() {
         case 1: enviarSolicitud(); break;
         case 2: aceptarSolicitudes(); break;
         case 0: break;
-        default: cout << "[!] Opción inválida.\n\n";
+        default: cout << "[!] Opcion invalida.\n\n";
         }
     } while (op != 0);
 }
 
-// Submenú de mensajes (enviar, leer nuevos y buscar por fecha)
+// Submenu de mensajes (enviar, leer nuevos y buscar por fecha)
 void Menu::menuMensajes() {
     unsigned int op;
     do {
@@ -237,7 +237,7 @@ void Menu::menuMensajes() {
         cout << "0.- Volver\n";
         cout << "+----------------------------------+\n";
 
-        if (!leerNumero("Su opción: ", op)) {
+        if (!leerNumero("Su opcion: ", op)) {
             op = 99;
         }
 
@@ -246,12 +246,12 @@ void Menu::menuMensajes() {
         case 2: leerNuevos(); break;
         case 3: buscarPorFecha(); break;
         case 0: break;
-        default: cout << "[!] Opción inválida.\n\n";
+        default: cout << "[!] Opcion invalida.\n\n";
         }
     } while (op != 0);
 }
 
-// Pide un nombre de usuario y le envía una solicitud de amistad
+// Pide un nombre de usuario y le envia una solicitud de amistad
 void Menu::enviarSolicitud() {
     Medidor::reiniciar();
 
@@ -295,8 +295,8 @@ void Menu::aceptarSolicitudes() {
         }
         cout << "+----------------------------------+\n";
 
-        if (!leerNumero("Número de la solicitud a aceptar (0 para volver): ", opcion)|| opcion > total) {
-            cout << "[!] Opción inválida.\n\n";
+        if (!leerNumero("Numero de la solicitud a aceptar (0 para volver): ", opcion)|| opcion > total) {
+            cout << "[!] Opcion invalida.\n\n";
             continue;
         }
         if (opcion == 0) {
@@ -310,7 +310,7 @@ void Menu::aceptarSolicitudes() {
     mostrarMedicion();
 }
 
-// Muestra los álbumes visibles de un amigo y permite abrir uno
+// Muestra los albumes visibles de un amigo y permite abrir uno
 void Menu::visitarPerfil() {
     Medidor::reiniciar();
 
@@ -337,7 +337,7 @@ void Menu::visitarPerfil() {
     Medidor::sumarMemoria(sizeof(amigo) + sizeof(total) + sizeof(visibles) + sizeof(op));
 
     cout << "+==================================+\n";
-    cout << " ÁLBUMES DE " << amigo->getNombreUsuario() << "\n";
+    cout << " ALBUMES DE " << amigo->getNombreUsuario() << "\n";
     cout << "+----------------------------------+\n";
     for (unsigned int i = 0; i < total; ++i) {
         Medidor::contar();
@@ -350,26 +350,26 @@ void Menu::visitarPerfil() {
     cout << "+----------------------------------+\n";
 
     if (visibles == 0) {
-        cout << "Este amigo no tiene álbumes visibles para ti.\n\n";
-    } else if (!leerNumero("Número de álbum a ver (0 para volver): ", op) || op > total) {
-        cout << "[!] Opción inválida.\n\n";
+        cout << "Este amigo no tiene albumes visibles para ti.\n\n";
+    } else if (!leerNumero("Numero de album a ver (0 para volver): ", op) || op > total) {
+        cout << "[!] Opcion invalida.\n\n";
     } else if (op != 0) {
         const Album* album = amigo->getAlbum(op - 1);
         if (album->esVisiblePara(false, true)) {
             carrusel(*album, amigo->getNombreUsuario());
         } else {
-            cout << "[!] Ese álbum no está disponible.\n\n";
+            cout << "[!] Ese album no esta disponible.\n\n";
         }
     }
 
     mostrarMedicion();
 }
 
-// Recorre las fotos de un álbum (siguiente, previa, like y quitar like)
+// Recorre las fotos de un album (siguiente, previa, like y quitar like)
 void Menu::carrusel(const Album& album, const string& nombreDueno) {
     unsigned int n = album.cantidadFotos();
     if (n == 0) {
-        cout << "Este álbum no tiene fotos.\n\n";
+        cout << "Este album no tiene fotos.\n\n";
         return;
     }
 
@@ -383,7 +383,7 @@ void Menu::carrusel(const Album& album, const string& nombreDueno) {
         Foto* foto = album.getFoto(i);
 
         cout << "+==================================+\n";
-        cout << " Foto " << (i + 1) << " de " << n << "  |  Álbum: " << album.getNombre() << "\n";
+        cout << " Foto " << (i + 1) << " de " << n << "  |  Album: " << album.getNombre() << "\n";
         cout << "+----------------------------------+\n";
         cout << "Ruta: " << SUB_RUTA_FIJA << nombreDueno << "/albums/"<< album.getNombre() << "/" << foto->getNombre() << ".png\n";
         cout << "Fecha: " << foto->getFecha() << "  |  Likes: " << foto->getLikes() << "\n";
@@ -392,10 +392,10 @@ void Menu::carrusel(const Album& album, const string& nombreDueno) {
         cout << "2.- Previa\n";
         cout << "3.- Dar like\n";
         cout << "4.- Quitar like\n";
-        cout << "0.- Salir del álbum\n";
+        cout << "0.- Salir del album\n";
         cout << "+----------------------------------+\n";
 
-        if (!leerNumero("Su opción: ", op)) {
+        if (!leerNumero("Su opcion: ", op)) {
             op = 99;
         }
 
@@ -411,12 +411,12 @@ void Menu::carrusel(const Album& album, const string& nombreDueno) {
             sistema.marcarCambioLikes();
             break;
         case 0: salir = true; break;
-        default: cout << "[!] Opción inválida.\n\n";
+        default: cout << "[!] Opcion invalida.\n\n";
         }
     }
 }
 
-// Pide cuántas sugerencias ver y permite enviar solicitud a una de ellas
+// Pide cuantas sugerencias ver y permite enviar solicitud a una de ellas
 void Menu::verSugerencias() {
     Medidor::reiniciar();
 
@@ -424,8 +424,8 @@ void Menu::verSugerencias() {
     cout << "+==================================+\n";
     cout << "|      SUGERENCIAS DE AMISTAD      |\n";
     cout << "+==================================+\n";
-    while (!leerNumero("¿Cuántas sugerencias desea ver? (1 a 20): ", k) || k < 1 || k > 20) {
-        cout << "[!] Valor inválido.\n\n";
+    while (!leerNumero("¿Cuantas sugerencias desea ver? (1 a 20): ", k) || k < 1 || k > 20) {
+        cout << "[!] Valor invalido.\n\n";
     }
 
     unsigned short* ids = new unsigned short[k];
@@ -441,7 +441,7 @@ void Menu::verSugerencias() {
         cout << "+----------------------------------+\n";
         for (unsigned short i = 0; i < n; ++i) {
             Medidor::contar();
-            cout << (i + 1) << ".- " << sistema.getUsuario(ids[i])->getNombreUsuario() << " (" << comunes[i] << " amigos en común)\n";
+            cout << (i + 1) << ".- " << sistema.getUsuario(ids[i])->getNombreUsuario() << " (" << comunes[i] << " amigos en comun)\n";
         }
         cout << "+----------------------------------+\n";
         if (n < k) {
@@ -449,8 +449,8 @@ void Menu::verSugerencias() {
         }
 
         unsigned int op = 0;
-        if (!leerNumero("Número al que desea enviar solicitud (0 para ninguno): ", op) || op > n) {
-            cout << "[!] Opción inválida.\n\n";
+        if (!leerNumero("Numero al que desea enviar solicitud (0 para ninguno): ", op) || op > n) {
+            cout << "[!] Opcion invalida.\n\n";
         } else if (op != 0) {
             unsigned char codigo = sistema.enviarSolicitud(sistema.getUsuario(ids[op - 1])->getNombreUsuario());
             mostrarResultadoSolicitud(codigo);
@@ -463,7 +463,7 @@ void Menu::verSugerencias() {
     mostrarMedicion();
 }
 
-// Pide el amigo y el texto, y envía el mensaje
+// Pide el amigo y el texto, y envia el mensaje
 void Menu::enviarMensaje() {
     Medidor::reiniciar();
 
@@ -474,7 +474,7 @@ void Menu::enviarMensaje() {
     cout << "Nombre del amigo: ";
     getline(cin, nombre);
     cout << "\n";
-    cout << "Mensaje (máximo 512 caracteres): ";
+    cout << "Mensaje (maximo 512 caracteres): ";
     getline(cin, texto);
     cout << "\n";
     Medidor::sumarMemoria(sizeof(nombre) + sizeof(texto) + nombre.size() + texto.size());
@@ -483,15 +483,15 @@ void Menu::enviarMensaje() {
     switch (codigo) {
     case 0: cout << "[OK] Mensaje enviado.\n\n"; break;
     case 1: cout << "[!] Ese usuario no existe o no es tu amigo.\n\n"; break;
-    case 2: cout << "[!] No se puede enviar un mensaje vacío.\n\n"; break;
+    case 2: cout << "[!] No se puede enviar un mensaje vacio.\n\n"; break;
     case 3: cout << "[!] El mensaje supera los 512 caracteres.\n\n"; break;
     default: cout << "[X] No se pudo enviar el mensaje.\n\n";
     }
 
-    mostrarMedicion(codigo == 0 ? "ctime (fecha de envío)" : "ninguno");
+    mostrarMedicion(codigo == 0 ? "ctime (fecha de envio)" : "ninguno");
 }
 
-// Muestra los mensajes no leídos y los marca como leídos
+// Muestra los mensajes no leidos y los marca como leidos
 void Menu::leerNuevos() {
     Medidor::reiniciar();
 
@@ -521,7 +521,7 @@ void Menu::leerNuevos() {
     mostrarMedicion();
 }
 
-// Pide un rango de fechas y muestra los mensajes recibidos en él
+// Pide un rango de fechas y muestra los mensajes recibidos en el
 void Menu::buscarPorFecha() {
     Medidor::reiniciar();
 
@@ -535,15 +535,15 @@ void Menu::buscarPorFecha() {
 
     while (true) {
         while (!leerFecha("Fecha de inicio", inicio)) {
-            cout << "[!] Fecha inválida. Intente de nuevo.\n\n";
+            cout << "[!] Fecha invalida. Intente de nuevo.\n\n";
         }
         while (!leerFecha("Fecha de fin", fin)) {
-            cout << "[!] Fecha inválida. Intente de nuevo.\n\n";
+            cout << "[!] Fecha invalida. Intente de nuevo.\n\n";
         }
         if (!(fin < inicio)) {
             break;
         }
-        cout << "[!] La fecha de fin es anterior a la de inicio. Ingréselas de nuevo.\n\n";
+        cout << "[!] La fecha de fin es anterior a la de inicio. Ingreselas de nuevo.\n\n";
     }
 
     unsigned int total = activo->cantidadRecibidos();
@@ -580,7 +580,7 @@ void Menu::mostrarMedicion(const string& externos) const {
     cout << "+==================================+\n\n";
 }
 
-// Lee un número entero positivo (devuelve false si lo escrito no es válido)
+// Lee un numero entero positivo (devuelve false si lo escrito no es valido)
 bool Menu::leerNumero(const string& texto, unsigned int& valor) const {
     cout << texto;
     string linea;
@@ -600,12 +600,12 @@ bool Menu::leerNumero(const string& texto, unsigned int& valor) const {
     return true;
 }
 
-// Lee día, mes y año, y arma la fecha (devuelve false si algo es inválido)
+// Lee dia, mes y ano, y arma la fecha (devuelve false si algo es invalido)
 bool Menu::leerFecha(const string& texto, Fecha& resultado) const {
     unsigned int d = 0, m = 0, a = 0;
-    if (!leerNumero(texto + " - día: ", d) || d < 1 || d > 31) return false;
+    if (!leerNumero(texto + " - dia: ", d) || d < 1 || d > 31) return false;
     if (!leerNumero(texto + " - mes: ", m) || m < 1 || m > 12) return false;
-    if (!leerNumero(texto + " - año: ", a) || a < 1900 || a > 2100) return false;
+    if (!leerNumero(texto + " - ano: ", a) || a < 1900 || a > 2100) return false;
     resultado = Fecha(static_cast<unsigned char>(d),static_cast<unsigned char>(m),static_cast<unsigned short>(a));
     return true;
 }
@@ -613,7 +613,7 @@ bool Menu::leerFecha(const string& texto, Fecha& resultado) const {
 void Menu::guardarYMedir(bool amistades, bool mensajes, bool likes) {
     Medidor::reiniciar();
     sistema.guardarDatos(amistades, mensajes, likes);
-    // Si no se escribió nada, las iteraciones quedan en 0 y no se muestra el cuadro
+    // Si no se escribio nada, las iteraciones quedan en 0 y no se muestra el cuadro
     if (Medidor::getIteraciones() > 0) {
         mostrarMedicion("fstream (escritura de archivos)");
     }
