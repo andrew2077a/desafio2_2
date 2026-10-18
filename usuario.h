@@ -2,10 +2,10 @@
 #define USUARIO_H
 
 #include <string>
-#include "Fecha.h"
+#include "fecha.h"
 #include "Lista.h"
-#include "Album.h"
-#include "Mensaje.h"
+#include "album.h"
+#include "mensaje.h"
 
 using namespace std;
 
@@ -52,10 +52,9 @@ public:
     const string& getCorreo() const;
     const string& getCiudad() const;
     const string& getPais() const;
-    Fecha getFechaNacimiento() const;
-    Fecha getFechaInscripcion() const;
+    const Fecha& getFechaNacimiento() const;
+    const Fecha& getFechaInscripcion() const;
     unsigned int bytesUsados()const;
-
 
 };
 #endif // USUARIO_H

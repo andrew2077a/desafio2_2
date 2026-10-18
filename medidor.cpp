@@ -29,3 +29,7 @@ unsigned long long Medidor::getMemoria(){
 
 
 
+
+
+
+

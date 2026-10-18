@@ -11,6 +11,9 @@ private:
     Lista<Usuario*> usuarios;
     SugerenciasAmigos amistades;
     short usuarioActivo;
+    bool cambiosAmistades;
+    bool cambiosMensajes;
+    bool cambiosLikes;
     bool cargarUsuarios();
     bool cargarAmistades();
     bool cargarMensajes();
@@ -20,6 +23,7 @@ private:
     bool guardarMensajes();
     bool guardarLikes();
     short buscarUsuario(const string& nombre);
+
 
 
 public:
@@ -38,6 +42,8 @@ public:
     void aceptarSolicitud(unsigned int posicion );
     unsigned short obtenerSugerencias(unsigned short k,unsigned short* ids,unsigned short* comunes);
     unsigned char enviarMensaje(const string& nombreAmigo , const string& texto );
+    void marcarCambioMensajes();
+    void marcarCambioLikes();
     unsigned long long bytesUsados();
 };
 

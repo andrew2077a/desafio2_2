@@ -1,4 +1,4 @@
-#include "foto.h"
+#include "Foto.h"
 
 // Constructor parametrizado
 Foto::Foto(const string& nombre, const Fecha& fecha, unsigned int tamano, unsigned int likes)
@@ -30,7 +30,7 @@ const string &Foto::getNombre() const {
 }
 
 // Retorna la fecha de la foto
-const Fecha Foto::getFecha() const {
+const Fecha& Foto::getFecha() const {
     return fecha;
 }
 
